@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-function searchFiles(startPath, fileType, result = []) {
+function searchFiles(startPath, fileTypes, result = []) {
     if (!fs.existsSync(startPath)) {
         console.log("Directory does not exist:", startPath);
         return [];
@@ -12,8 +12,8 @@ function searchFiles(startPath, fileType, result = []) {
         const filename = path.join(startPath, files[i]);
         const stat = fs.lstatSync(filename);
         if (stat.isDirectory()) {
-            searchFiles(filename, fileType, result); // Recurse into subdirectory
-        } else if (filename.endsWith(fileType)) {
+            searchFiles(filename, fileTypes, result); // Recurse into subdirectory
+        } else if (fileTypes.some(fileType => filename.endsWith(fileType))) {
             console.log("Found file:", filename); // Print each file when it is found
             result.push(filename);
         }
@@ -23,7 +23,7 @@ function searchFiles(startPath, fileType, result = []) {
 
 // Example usage:
 const startPath = 'z:\\';
-const fileType = '.jpg'; // Change this to the file type you are looking for
-const foundFiles = searchFiles(startPath, fileType);
+const fileTypes = ['.jpg', '.png']; // Change this to the file types you are looking for
+const foundFiles = searchFiles(startPath, fileTypes);
 
 console.log("Found files:", foundFiles);
