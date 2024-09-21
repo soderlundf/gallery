@@ -12,6 +12,15 @@
   "license": "ISC",
   "description": "Searches for files matching a pattern and indexes them in a database",
   "dependencies": {
-    "express": "^4.21.0"
+    "better-sqlite3": "^11.3.0",
+    "consign": "^0.1.6",
+    "cron": "^3.1.7",
+    "exif": "^0.6.0",
+    "express": "^4.21.0",
+    "ioredis": "^5.4.1",
+    "pg": "^8.13.0",
+    "sqlite3": "^5.1.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   }
 }
