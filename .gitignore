@@ -32,6 +32,9 @@ coverage
 # Bower dependency directory (https://bower.io/)
 bower_components
 
+# Sqlite3 files
+*.sqlite
+
 # node-waf configuration
 .lock-wscript
 
