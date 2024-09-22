@@ -3,7 +3,7 @@ services:
     build: .
     ports:
       - "3000:3000"
-    container_name: galler-indexer
+    container_name: gallery-indexer
     hostname: gallery-indexer
     environment:
       - PORT=3000
