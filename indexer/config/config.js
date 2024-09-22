@@ -10,14 +10,30 @@ const config = {
         user: process.env.DB_USER || 'gallery_indexer',
         password: process.env.DB_PASSWORD || 'gallery_indexer'
     },
-    logging: {
-        level: process.env.LOG_LEVEL || 'info'
+    logger: {
+        appenders: {
+            out: {
+                type: "stdout",
+                layout: {
+                    type: "pattern",
+                    pattern: "[%d] [%p] [%f:%l] - %m"
+                }
+            }
+        },
+        categories: {
+            default: {
+                appenders: ["out"],
+                level: "debug",
+                enableCallStack: true
+            }
+        },
     },
     indexer: {
         startPath: process.env.INDEXER_START_PATH || 'z:\\',
         fileTypes: process.env.INDEXER_FILE_TYPES ? process.env.INDEXER_FILE_TYPES.split(',') : ['.jpg', '.png'],
         pauseAfter: process.env.INDEXER_PAUSE_AFTER || 1000,
-        pauseTimeSeconds: process.env.INDEXER_PAUSE_TIME_SECONDS || 5
+        pauseTimeSeconds: process.env.INDEXER_PAUSE_TIME_SECONDS || 5,
+        cronSchedule: process.env.INDEXER_CRON_SCHEDULE || '*/30 * * * * *'
     }
 };
 
