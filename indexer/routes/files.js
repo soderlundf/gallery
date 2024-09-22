@@ -1,4 +1,7 @@
 const db = require('../db/postgresql');
+const logger_config = require('../config/config').logger;
+const logger = require('log4js').configure(logger_config).getLogger('out')
+
 
 module.exports = (app) => {
     /**
@@ -20,12 +23,13 @@ module.exports = (app) => {
      *                   example: 100
      */
     app.get('/file/count', async (req, res) => {
+        logger.info('Getting image count');
         try {
             const count = await db.count_all_images();
             res.status(200).json({ count });
         } catch (error) {
             console.error('Error fetching image count:', error);
-            res.status(500).json({ error: 'Internal Server Error'});
+            res.status(500).json({ error: 'Internal Server Error' });
         }
     });
 
@@ -117,6 +121,7 @@ module.exports = (app) => {
      *                   example: "Internal Server Error"
      */
     app.get('/file/search', async (req, res) => {
+        logger.info('Searching files by name');
         const { query, page = 1, limit = 10, sort = 'asc' } = req.query;
         if (!query) {
             return res.status(400).json({ error: 'Query parameter "query" is required' });
