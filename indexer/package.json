@@ -13,9 +13,10 @@
   "description": "Searches for files matching a pattern and indexes them in a database",
   "dependencies": {
     "consign": "^0.1.6",
-    "cron": "^3.1.7",
     "express": "^4.21.0",
+    "node-cron": "^3.0.3",
     "pg": "^8.13.0",
+    "pino": "^9.4.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   }
