@@ -1,4 +1,4 @@
-FROM node:current-alpine3.20
+FROM node:slim
 WORKDIR /indexer
 COPY . .
 RUN mkdir /source_files
