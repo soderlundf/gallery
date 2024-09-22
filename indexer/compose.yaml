@@ -1,0 +1,23 @@
+services:
+  gallery-indexer:
+    build: .
+    ports:
+      - "3000:3000"
+    container_name: gallery-indexer
+    hostname: gallery-indexer
+    environment:
+      - PORT=3000
+      - DB_HOST=127.0.0.1
+      - DB_PORT=5432
+      - DB_USER=gallery_indexer
+      - DB_PASSWORD=gallery_indexer
+      - DB_NAME=gallery_index
+      - INDEXER_START_PATH=/source_files
+      - INDEXER_PAUSE_AFTER=1000
+      - INDEXER_PAUSE_TIME_SECONDS=5
+      - INDEXER_CRON_SCHEDULE='0 0 * * * *'
+    volumes:
+      - type: bind
+        source: /mnt/source_files
+        target: /source_files
+        read_only: true
