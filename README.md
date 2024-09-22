@@ -1,5 +1,3 @@
-[[_TOC_]]
-
 # gallery
 
 Working name is currently `gallery`.
