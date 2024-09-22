@@ -7,8 +7,8 @@ const config = {
         host: process.env.DB_HOST || '192.168.75.149',
         port: process.env.DB_PORT || 5432,
         name: process.env.DB_NAME || 'gallery_index',
-        user: process.env.DB_USER || 'gallery_indexer',
-        password: process.env.DB_PASSWORD || 'gallery_indexer'
+        user: process.env.DB_USER || '',
+        password: process.env.DB_PASSWORD || ''
     },
     logger: {
         appenders: {
