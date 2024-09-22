@@ -10,7 +10,7 @@ const logger = require('log4js').configure(logger_config).getLogger('out')
 consign()
     .include('models')
     .include('routes')
-    .include('./swagger.js')
+    .include('swagger')
     .into(app);
 
 /**
