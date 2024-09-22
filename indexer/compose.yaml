@@ -13,7 +13,5 @@ services:
       - INDEXER_START_PATH=/source_files
       - INDEXER_PAUSE_AFTER=1000
       - INDEXER_PAUSE_TIME_SECONDS=5
-      - VOLUME_USER=<username>
-      - VOLUME_PASSWORD=<password>
     volumes:
       - /mnt/source_files:/source_files:ro
