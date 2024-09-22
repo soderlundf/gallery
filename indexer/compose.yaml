@@ -1,0 +1,19 @@
+services:
+  gallery-indexer:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_HOST=127.0.0.1
+      - DB_PORT=5432
+      - DB_USER=gallery_indexer
+      - DB_PASSWORD=gallery_indexer
+      - DB_NAME=gallery_indexer
+      - INDEXER_START_PATH=/source_files
+      - INDEXER_PAUSE_AFTER=1000
+      - INDEXER_PAUSE_TIME_SECONDS=5
+      - VOLUME_USER=<username>
+      - VOLUME_PASSWORD=<password>
+    volumes:
+      - /mnt/source_files:/source_files:ro
