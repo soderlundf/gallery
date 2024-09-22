@@ -30,10 +30,14 @@ const config = {
     },
     indexer: {
         startPath: process.env.INDEXER_START_PATH || 'z:\\',
-        fileTypes: process.env.INDEXER_FILE_TYPES ? process.env.INDEXER_FILE_TYPES.split(',') : ['.jpg', '.png'],
+        fileTypes: process.env.INDEXER_FILE_TYPES ? process.env.INDEXER_FILE_TYPES.split(',') :
+            [
+                '.jpg', '.png', 'gif', '.jpeg', '.bmp',
+                '.tiff', '.webp', '.svg', '.ico'
+            ],
         pauseAfter: process.env.INDEXER_PAUSE_AFTER || 1000,
         pauseTimeSeconds: process.env.INDEXER_PAUSE_TIME_SECONDS || 5,
-        cronSchedule: process.env.INDEXER_CRON_SCHEDULE || '*/30 * * * * *'
+        cronSchedule: process.env.INDEXER_CRON_SCHEDULE || '0 0 * * * *'
     }
 };
 
