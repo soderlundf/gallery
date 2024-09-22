@@ -16,4 +16,7 @@ services:
       - INDEXER_PAUSE_AFTER=1000
       - INDEXER_PAUSE_TIME_SECONDS=5
     volumes:
-      - /mnt/source_files:/source_files:ro
+      - type: bind
+        source: /mnt/source_files
+        target: /source_files
+        read_only: true
