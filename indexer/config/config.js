@@ -29,7 +29,7 @@ const config = {
         },
     },
     indexer: {
-        startPath: process.env.INDEXER_START_PATH || 'z:\\',
+        startPath: process.env.INDEXER_START_PATH || '/source_files',
         fileTypes: process.env.INDEXER_FILE_TYPES ? process.env.INDEXER_FILE_TYPES.split(',') :
             [
                 '.jpg', '.png', 'gif', '.jpeg', '.bmp',
