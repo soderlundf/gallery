@@ -1,6 +1,6 @@
 {
   "name": "indexer",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "main": "indexer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,9 +14,9 @@
   "dependencies": {
     "consign": "^0.1.6",
     "express": "^4.21.0",
+    "log4js": "^6.9.1",
     "node-cron": "^3.0.3",
     "pg": "^8.13.0",
-    "pino": "^9.4.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   }
