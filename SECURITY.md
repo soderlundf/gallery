@@ -9,4 +9,4 @@
 
 ## Reporting a Vulnerability
 
-TBD
+Use GitHub's [https://github.com/soderlundf/gallery/security/advisories](https://github.com/soderlundf/gallery/security/advisories/new) and create a security advisory report.
