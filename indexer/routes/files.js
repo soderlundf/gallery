@@ -174,4 +174,41 @@ module.exports = (app) => {
             res.status(500).json({ error: 'Internal Server Error' });
         }
     });
+
+    /**
+     * @swagger
+     * /file/count-by-year:
+     *   get:
+     *     summary: Get image count grouped by year
+     *     description: Returns the count of images in the database grouped by year.
+     *     responses:
+     *       200:
+     *         description: A JSON object containing the image count grouped by year.
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: object
+     *               properties:
+     *                 counts:
+     *                   type: array
+     *                   items:
+     *                     type: object
+     *                     properties:
+     *                       year:
+     *                         type: integer
+     *                         example: 2023
+     *                       count:
+     *                         type: integer
+     *                         example: 100
+     */
+    app.get('/file/count-by-year', async (req, res) => {
+        logger.info('Getting image count grouped by year');
+        try {
+            const counts = await db.get_image_count_by_year();
+            res.status(200).json({ counts });
+        } catch (error) {
+            console.error('Error fetching image count by year:', error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
+    });
 }

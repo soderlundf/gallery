@@ -36,6 +36,27 @@ const createIndexingJobsTableQuery = `
 `;
 
 /**
+ * Get the count of images grouped by year.
+ * @returns {Promise<Array<{year: number, count: number}>>} - A promise that resolves to an array of objects containing the year and its count.
+ */
+db.get_image_count_by_year = async () => {
+    const query = `
+        SELECT EXTRACT(YEAR FROM created) AS year, COUNT(*) as count
+        FROM images
+        GROUP BY year
+        ORDER BY year DESC
+    `;
+
+    try {
+        const res = await db.query(query);
+        return res.rows;
+    } catch (err) {
+        logger.error('Error getting image count by year', err.stack);
+        throw err;
+    }
+}
+
+/**
  * Get the count of images grouped by unique file extension.
  * @returns {Promise<Array<{extension: string, count: number}>>} - A promise that resolves to an array of objects containing the extension and its count.
  */
