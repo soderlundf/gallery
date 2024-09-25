@@ -36,6 +36,27 @@ const createIndexingJobsTableQuery = `
 `;
 
 /**
+ * Get the count of images grouped by unique file extension.
+ * @returns {Promise<Array<{extension: string, count: number}>>} - A promise that resolves to an array of objects containing the extension and its count.
+ */
+db.get_unique_file_extensions = async () => {
+    const query = `
+        SELECT extension, COUNT(*) as count
+        FROM images
+        GROUP BY extension
+        ORDER BY count DESC
+    `;
+
+    try {
+        const res = await db.query(query);
+        return res.rows;
+    } catch (err) {
+        logger.error('Error getting unique file extensions', err.stack);
+        throw err;
+    }
+}
+
+/**
  * Insert a new indexing job into the database.
  * @param {string} status - The status of the indexing job ('running', 'completed', or 'failed').
  * @param {Date} end_time - The end time of the indexing job.

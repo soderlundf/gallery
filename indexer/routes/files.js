@@ -143,4 +143,35 @@ module.exports = (app) => {
             res.status(500).json({ error: 'Internal Server Error ' + error });
         }
     });
+
+    /**
+     * @swagger
+     * /file/extensions:
+     *   get:
+     *     summary: Get unique file extensions
+     *     description: Returns a list of unique file extensions in the database.
+     *     responses:
+     *       200:
+     *         description: A JSON object containing the unique file extensions.
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: object
+     *               properties:
+     *                 extensions:
+     *                   type: array
+     *                   items:
+     *                     type: string
+     *                     example: ".jpg"
+     */
+    app.get('/file/extensions', async (req, res) => {
+        logger.info('Getting unique file extensions');
+        try {
+            const extensions = await db.get_unique_file_extensions();
+            res.status(200).json({ extensions });
+        } catch (error) {
+            console.error('Error fetching unique file extensions:', error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
+    });
 }
