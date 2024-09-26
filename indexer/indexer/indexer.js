@@ -5,7 +5,6 @@ const indexer_config = require('../config/config').indexer;
 const logger_config = require('../config/config').logger;
 const logger = require('log4js').configure(logger_config).getLogger('out')
 
-
 const indexer = {}
 
 /**
@@ -114,15 +113,15 @@ indexer.searchFiles = async (startPath, fileTypes, pauseAfter = 100, pauseTimeSe
                 extension: path.extname(filePath)
             }
 
-            let inserted_files = await db.insert_file_data(file_data);
-            new_files += inserted_files;
+            let inserted_file = await db.insert_file_data(file_data);
+            if (inserted_file)
+                new_files++
 
             fileCount++;
         }
 
         if (fileCount >= pauseAfter) {
             await new Promise(resolve => setTimeout(resolve, pauseTimeSeconds * 1000));
-            fileCount = 0;
         }
     }
 
