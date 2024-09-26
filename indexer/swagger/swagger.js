@@ -1,3 +1,4 @@
+const version = require('../package.json').version;
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 
@@ -6,7 +7,7 @@ const options = {
         openapi: '3.0.0',
         info: {
             title: 'Gallery Indexer API',
-            version: '1.0.0',
+            version: version,
             description: 'API documentation for the Gallery Indexer',
         },
     },
