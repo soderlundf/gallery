@@ -23,12 +23,12 @@ module.exports = (app) => {
      *         description: Internal Server Error
      */
     app.get('/indexer/status', async (req, res) => {
-        console.log('Getting indexer status');
+        logger.log('Getting indexer status');
         try {
             const status = await db.is_indexing();
             res.status(200).json({ status });
         } catch (error) {
-            console.error('Error fetching indexer status:', error);
+            logger.error('Error fetching indexer status:', error);
             res.status(500).json({ error: 'Internal Server Error' });
         }
     })
@@ -109,7 +109,7 @@ module.exports = (app) => {
             }
             res.status(200).json({ history });
         } catch (error) {
-            console.error('Error fetching indexing history:', error);
+            logger.error('Error fetching indexing history:', error);
             res.status(500).json({ error: 'Internal Server Error' });
         }
     })

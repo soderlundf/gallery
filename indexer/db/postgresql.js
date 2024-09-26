@@ -315,7 +315,7 @@ const ensureIndexerRowQuery = `
  */
 db.query(ensureIndexerRowQuery)
     .then(() => logger.info('Ensured indexer row exists'))
-    .catch(err => console.error('Error ensuring indexer row', err.stack));
+    .catch(err => logger.error('Error ensuring indexer row', err.stack));
 
 const createTableQuery = `
     CREATE TABLE IF NOT EXISTS images (
@@ -337,7 +337,7 @@ const createTableQuery = `
  */
 db.query(createTableQuery)
     .then(() => logger.debug('Table "images" is ready'))
-    .catch(err => console.error('Error creating table', err.stack));
+    .catch(err => logger.error('Error creating table', err.stack));
 
 const createUniqueConstraintQuery = `
     DO $$

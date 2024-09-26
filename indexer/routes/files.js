@@ -28,7 +28,7 @@ module.exports = (app) => {
             const count = await db.count_all_images();
             res.status(200).json({ count });
         } catch (error) {
-            console.error('Error fetching image count:', error);
+            logger.error('Error fetching image count:', error);
             res.status(500).json({ error: 'Internal Server Error' });
         }
     });
@@ -139,7 +139,7 @@ module.exports = (app) => {
                 limit: parseInt(limit, 10)
             });
         } catch (error) {
-            console.error('Error searching files:', error);
+            logger.error('Error searching files:', error);
             res.status(500).json({ error: 'Internal Server Error ' + error });
         }
     });
@@ -170,7 +170,7 @@ module.exports = (app) => {
             const extensions = await db.get_unique_file_extensions();
             res.status(200).json({ extensions });
         } catch (error) {
-            console.error('Error fetching unique file extensions:', error);
+            logger.error('Error fetching unique file extensions:', error);
             res.status(500).json({ error: 'Internal Server Error' });
         }
     });
@@ -207,7 +207,7 @@ module.exports = (app) => {
             const counts = await db.get_image_count_by_year();
             res.status(200).json({ counts });
         } catch (error) {
-            console.error('Error fetching image count by year:', error);
+            logger.error('Error fetching image count by year:', error);
             res.status(500).json({ error: 'Internal Server Error' });
         }
     });
