@@ -2,10 +2,12 @@ const express = require('express')
 const app = express()
 const consign = require('consign');
 const indexer = require('./indexer/indexer');
-const jobs = require('./jobs/jobs');
 const app_config = require('./config/config').app;
 const logger_config = require('./config/config').logger;
 const logger = require('log4js').configure(logger_config).getLogger('out')
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 consign()
     .include('models')
