@@ -1,7 +1,8 @@
 const config = {
     app: {
         port: process.env.PORT || 3000,
-        env: process.env.NODE_ENV || 'development'
+        env: process.env.NODE_ENV || 'development',
+        api_version: process.env.API_VERSION || 'v1'
     },
     postgresql: {
         host: process.env.DB_HOST || '192.168.75.149',
@@ -23,7 +24,7 @@ const config = {
         categories: {
             default: {
                 appenders: ["out"],
-                level: "debug",
+                level: process.env.LOGLEVEL || "debug",
                 enableCallStack: true
             }
         },
