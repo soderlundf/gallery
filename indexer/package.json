@@ -14,7 +14,7 @@
   "description": "Searches for files matching a pattern and indexes them in a database",
   "dependencies": {
     "consign": "^0.1.6",
-    "express": "^4.21.0",
+    "express": "^4.21.1",
     "log4js": "^6.9.1",
     "node-cron": "^3.0.3",
     "pg": "^8.13.0",
